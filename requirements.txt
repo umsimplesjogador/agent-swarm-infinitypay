@@ -1,0 +1,39 @@
+# === Dependências principais ===
+fastapi==0.115.0
+uvicorn[standard]==0.30.3
+pydantic==2.9.2
+
+# === Agentes e orquestração ===
+openai==1.44.1
+google-generativeai==0.7.2
+
+# === Ferramentas úteis ===
+httpx==0.27.2
+requests==2.32.3
+python-dotenv==1.0.1
+beautifulsoup4==4.13.0
+sentence-transformers
+faiss-cpu
+
+# === Testes ===
+pytest==8.3.3
+
+# === Tipagem ===
+mypy==1.11.2
+types-requests==2.32.0.20240914
+
+# === CI/CD (GitHub Actions pode usar) ===
+ruff==0.6.7
+black==24.8.0
+
+# === Instruções ===
+# 1. Crie e ative um ambiente virtual:
+#    python -m venv .venv
+#    source .venv/bin/activate  # Linux/Mac
+#    .venv\Scripts\activate   # Windows
+#
+# 2. Instale as dependências:
+#    pip install -r requirements.txt
+#
+# 3. Rode a aplicação localmente:
+#    uvicorn app.main:app --reload

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Agent Swarm Chat</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    #chat { border: 1px solid #ccc; padding: 10px; width: 500px; height: 400px; overflow-y: scroll; }
+    .user { color: blue; }
+    .agent { color: green; }
+    input { width: 400px; }
+  </style>
+</head>
+<body>
+  <h1>Agent Swarm Chat</h1>
+  <div id="chat"></div>
+  <input type="text" id="userMessage" placeholder="Digite sua dúvida...">
+  <button onclick="sendMessage()">Enviar</button>
+
+  <script>
+    const userId = "user123";  // pode ser dinâmico
+
+    async function sendMessage() {
+      const message = document.getElementById("userMessage").value;
+      if (!message) return;
+      document.getElementById("userMessage").value = "";
+
+      // Mostra mensagem do usuário
+      const chatDiv = document.getElementById("chat");
+      chatDiv.innerHTML += `<p class="user"><b>Você:</b> ${message}</p>`;
+      chatDiv.scrollTop = chatDiv.scrollHeight;
+
+      // Chama API
+      const res = await fetch("/process", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: message, user_id: userId })
+      });
+
+      const data = await res.json();
+      // Substitui \n por <br> para exibir quebras de linha
+      const formattedResponse = data.response.replace(/\n/g, "<br>");
+      chatDiv.innerHTML += `<p class="agent"><b>Agente:</b><br>${formattedResponse}</p>`;
+      chatDiv.scrollTop = chatDiv.scrollHeight;
+    }
+  </script>
+</body>
+</html>
