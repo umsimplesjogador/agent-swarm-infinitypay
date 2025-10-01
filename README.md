@@ -69,7 +69,7 @@ Swagger UI: http://localhost:8000/docs
 
 1- Construir a imagem
 2- Na raiz do projeto, execute: docker build -t agent-swarm .
-3- Execute o container: docker run -p 8000:8000 --env GEMINI_API_KEY="sua_chave_aqui" agent-swarm
+3- Execute o container: docker run -p 10000:8000 --env GEMINI_API_KEY="sua_chave_aqui" agent-swarm
 4- Acessar a aplicação em: Frontend chat: http://localhost:8000/chat e Swagger UI: http://localhost:8000/docs
 
 
